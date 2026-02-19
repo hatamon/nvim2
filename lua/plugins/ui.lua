@@ -39,7 +39,6 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
-    keys = require("config.keymaps.bufferline"),
     config = function()
       require("bufferline").setup({
         options = {
@@ -105,6 +104,13 @@ return {
         { "<leader>x", desc = "Close Buffer" }, -- 直接説明も書ける
       })
     end,
+  },
+
+  -- バッファを賢く消すプラグイン
+  {
+    "famiu/bufdelete.nvim",
+    -- キーマップはもちろん外出し！
+    keys = require("config.keymaps.bufdelete"),
   },
 }
 
