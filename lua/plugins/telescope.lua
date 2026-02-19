@@ -8,6 +8,7 @@ return {
       -- 検索を爆速にする拡張
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
+    keys = require("config.keymaps.telescope"),
     config = function()
       local telescope = require("telescope")
       local builtin = require("telescope.builtin")
@@ -25,13 +26,6 @@ return {
 
       -- 拡張読み込み
       telescope.load_extension("fzf")
-
-      -- キーバインド設定 (VSCodeライク + 独自)
-      local k = vim.keymap
-      k.set('n', '<leader>ff', builtin.find_files, { desc = "Find Files (Ctrl+P)" })
-      k.set('n', '<leader>fg', builtin.live_grep, { desc = "Live Grep (Ctrl+Shift+F)" })
-      k.set('n', '<leader>fb', builtin.buffers, { desc = "Find Buffers" })
-      k.set('n', '<leader>fh', builtin.help_tags, { desc = "Help Tags" })
     end,
   },
 }

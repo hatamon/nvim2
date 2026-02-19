@@ -9,14 +9,13 @@ return {
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
+    keys = require("config.keymaps.neotree"),
     config = function()
       require("neo-tree").setup({
         window = {
           width = 30,
         }
       })
-      -- VSCodeのように起動時にツリーを開く場合はここにキーマップを追加
-      vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { silent = true })
     end
   },
 
@@ -40,6 +39,7 @@ return {
     "akinsho/bufferline.nvim",
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons",
+    keys = require("config.keymaps.bufferline"),
     config = function()
       require("bufferline").setup({
         options = {
@@ -57,11 +57,6 @@ return {
           },
         }
       })
-      -- タブ切り替えのキーバインド (VSCode風にCtrl+Tabっぽく、あるいはShift+L/H)
-      vim.keymap.set("n", "<S-l>", "<Cmd>BufferLineCycleNext<CR>", { desc = "Next Tab" })
-      vim.keymap.set("n", "<S-h>", "<Cmd>BufferLineCyclePrev<CR>", { desc = "Prev Tab" })
-      -- タブを閉じる
-      vim.keymap.set("n", "<leader>x", "<Cmd>bdelete<CR>", { desc = "Close Buffer" })
     end
   },
 

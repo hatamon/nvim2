@@ -6,6 +6,7 @@ return {
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
         },
+        keys = require("config.keymaps.none-ls"),
         config = function()
             require("mason").setup()
 
@@ -22,16 +23,6 @@ return {
                     -- ["lua_ls"] = function() ... end,
                 },
             })
-
-            -- キーバインド
-            local k = vim.keymap
-            k.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to Definition" })
-            k.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover Info" })
-            k.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename" })
-            k.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code Action" })
-            k.set('n', '<leader>d', vim.diagnostic.open_float) -- エラー詳細表示
-            k.set('n', '[d', vim.diagnostic.goto_prev)         -- 前のエラーへ
-            k.set('n', ']d', vim.diagnostic.goto_next)         -- 次のエラーへ
         end,
     },
     -- 1. Mason本体
@@ -57,16 +48,5 @@ return {
             "nvim-lua/plenary.nvim",
             "nvimtools/none-ls-extras.nvim", -- ここ！追い出された子たちを呼び戻す
         },
-        config = function()
-            local null_ls = require("null-ls")
-            null_ls.setup({
-                -- ここは空でも mason-null-ls が自動で繋いでくれるけど、
-                -- 明示的に書くならこう：
-                sources = {
-                    require("none-ls.code_actions.eslint_d"), -- TS/JS用
-                    require("none-ls.diagnostics.eslint_d"), -- TS/JS用
-                },
-            })
-        end,
     },
 }
