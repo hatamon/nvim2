@@ -6,5 +6,5 @@ local function action(id)
 end
 
 return {
-  toggle_terminal = action("workbench.action.terminal.toggleTerminal"),
+  terminal_toggle = action("workbench.action.terminal.toggleTerminal"),
 }
