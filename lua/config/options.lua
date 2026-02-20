@@ -5,7 +5,6 @@ vim.g.maplocalleader = " "
 local opt = vim.opt
 
 opt.number = true -- 行番号表示
-opt.relativenumber = true -- 相対行番号（移動しやすくするため）
 opt.mouse = "a" -- マウス有効化
 opt.tabstop = 4 -- タブ幅
 opt.shiftwidth = 4

@@ -118,7 +118,6 @@ return {
     version = "*",
     opts = {
       size = 20,
-      open_mapping = "<C-\\>", -- Ctrl + \ でも開閉できるようにしておく
       direction = "float", -- デフォルトをフロートに設定
       float_opts = {
         border = "curved", -- 角丸でおしゃれに
