@@ -5,7 +5,7 @@ local keymap = vim.keymap
 local all_defs = require("config.keymaps.definitions")
 local actions = vim.g.vscode and require("config.keymaps.actions_vscode") or require("config.keymaps.actions_nvim")
 
-local persistent_groups = { "general", "bufferline" }
+local persistent_groups = { "general", "bufferline", "none_ls", "telescope" }
 
 for group_name, defs in pairs(all_defs) do
   local is_persistent = vim.tbl_contains(persistent_groups, group_name)

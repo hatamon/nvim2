@@ -6,7 +6,6 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
     },
-    keys = require("config.keymaps.helper").get_keys_for("none_ls"),
     config = function()
       require("mason").setup()
 
@@ -16,20 +15,19 @@ return {
         handlers = {
           -- 第一引数（名前なし）がデフォルトのハンドラーになる
           function(server_name)
-            local lc = require("lspconfig")
-            lc[server_name].setup({})
-            if server_name == "lua_ls" then
-              lc.lua_ls.setup({
-                settings = {
-                  Lua = {
-                    -- 1. LSP内蔵のフォーマッタを無効化する
-                    format = {
-                      enable = false,
-                    },
+            require("lspconfig")[server_name].setup({})
+          end,
+          -- ここに lua_ls 専用のハンドラを追加して、設定をズバッ！と注入する
+          ["lua_ls"] = function()
+            require("lspconfig").lua_ls.setup({
+              settings = {
+                Lua = {
+                  format = {
+                    enable = false,
                   },
                 },
-              })
-            end
+              },
+            })
           end,
         },
       })

@@ -8,7 +8,6 @@ return {
       -- 検索を爆速にする拡張
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     },
-    keys = require("config.keymaps.helper").get_keys_for("telescope"),
     config = function()
       local telescope = require("telescope")
       local builtin = require("telescope.builtin")
