@@ -16,11 +16,21 @@ return {
         handlers = {
           -- 第一引数（名前なし）がデフォルトのハンドラーになる
           function(server_name)
-            require("lspconfig")[server_name].setup({})
+            local lc = require("lspconfig")
+            lc[server_name].setup({})
+            if server_name == "lua_ls" then
+              lc.lua_ls.setup({
+                settings = {
+                  Lua = {
+                    -- 1. LSP内蔵のフォーマッタを無効化する
+                    format = {
+                      enable = false,
+                    },
+                  },
+                },
+              })
+            end
           end,
-
-          -- 個別設定が必要な場合は、サーバー名をキーにしてここに書く
-          -- ["lua_ls"] = function() ... end,
         },
       })
     end,
