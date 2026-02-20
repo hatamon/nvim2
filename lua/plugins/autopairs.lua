@@ -14,7 +14,7 @@ return {
       -- nvim-cmp との連携設定（ここがCursorっぽさの鍵！）
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
-      
+
       -- 補完で関数を確定した時に自動で () を付ける魔法
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,

@@ -1,52 +1,52 @@
 -- lua/plugins/lsp.lua
 return {
-    {
-        "neovim/nvim-lspconfig",
-        dependencies = {
-            "williamboman/mason.nvim",
-            "williamboman/mason-lspconfig.nvim",
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+    keys = require("config.keymaps.helper").get_keys_for("none_ls"),
+    config = function()
+      require("mason").setup()
+
+      require("mason-lspconfig").setup({
+        ensure_installed = { "ts_ls", "omnisharp", "lua_ls" },
+        -- これが最新の書き方！setupの中にhandlersを書くよ
+        handlers = {
+          -- 第一引数（名前なし）がデフォルトのハンドラーになる
+          function(server_name)
+            require("lspconfig")[server_name].setup({})
+          end,
+
+          -- 個別設定が必要な場合は、サーバー名をキーにしてここに書く
+          -- ["lua_ls"] = function() ... end,
         },
-        keys = require("config.keymaps.none-ls"),
-        config = function()
-            require("mason").setup()
+      })
+    end,
+  },
+  -- 1. Mason本体
+  {
+    "williamboman/mason.nvim",
+    opts = { ensure_installed = { "stylua", "prettier", "eslint_d" } },
+  },
 
-            require("mason-lspconfig").setup({
-                ensure_installed = { "ts_ls", "omnisharp", "lua_ls" },
-                -- これが最新の書き方！setupの中にhandlersを書くよ
-                handlers = {
-                    -- 第一引数（名前なし）がデフォルトのハンドラーになる
-                    function(server_name)
-                        require("lspconfig")[server_name].setup({})
-                    end,
+  -- 2. 橋渡し役 (これを入れると自動で none-ls と繋いでくれる！)
+  {
+    "jay-babu/mason-null-ls.nvim",
+    dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
+    opts = {
+      ensure_installed = { "stylua", "prettier", "eslint_d" },
+      automatic_installation = true,
+    },
+  },
 
-                    -- 個別設定が必要な場合は、サーバー名をキーにしてここに書く
-                    -- ["lua_ls"] = function() ... end,
-                },
-            })
-        end,
+  -- 3. none-ls 本体
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvimtools/none-ls-extras.nvim", -- ここ！追い出された子たちを呼び戻す
     },
-    -- 1. Mason本体
-    {
-        "williamboman/mason.nvim",
-        opts = { ensure_installed = { "stylua", "prettier", "eslint_d" } },
-    },
-
-    -- 2. 橋渡し役 (これを入れると自動で none-ls と繋いでくれる！)
-    {
-        "jay-babu/mason-null-ls.nvim",
-        dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
-        opts = {
-            ensure_installed = { "stylua", "prettier", "eslint_d" },
-            automatic_installation = true,
-        },
-    },
-
-    -- 3. none-ls 本体
-    {
-        "nvimtools/none-ls.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvimtools/none-ls-extras.nvim", -- ここ！追い出された子たちを呼び戻す
-        },
-    },
+  },
 }

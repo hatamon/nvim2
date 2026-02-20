@@ -3,12 +3,12 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",     -- LSPからの補完
-      "hrsh7th/cmp-buffer",       -- バッファ内の単語から補完
-      "hrsh7th/cmp-path",         -- ファイルパスの補完
-      "L3MON4D3/LuaSnip",         -- スニペットエンジン
+      "hrsh7th/cmp-nvim-lsp", -- LSPからの補完
+      "hrsh7th/cmp-buffer", -- バッファ内の単語から補完
+      "hrsh7th/cmp-path", -- ファイルパスの補完
+      "L3MON4D3/LuaSnip", -- スニペットエンジン
       "saadparwaiz1/cmp_luasnip", -- スニペットの補完
-      "onsails/lspkind.nvim",     -- アイコン表示
+      "onsails/lspkind.nvim", -- アイコン表示
     },
     config = function()
       local cmp = require("cmp")
