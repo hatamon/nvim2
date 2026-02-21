@@ -23,3 +23,9 @@ cmake --build . --config Release
 # 出来上がった DLL をプラグインのルートにコピー
 copy Release\libfzf.dll .
 ```
+
+
+### rg
+- 自分でビルドする
+- rust が必要
+- https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#building に従えばOK
