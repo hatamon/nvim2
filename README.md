@@ -24,8 +24,13 @@ cmake --build . --config Release
 copy Release\libfzf.dll .
 ```
 
-
 ### rg
 - 自分でビルドする
 - rust が必要
 - https://github.com/BurntSushi/ripgrep?tab=readme-ov-file#building に従えばOK
+
+## windows / linux 共通
+
+### フォント
+- https://www.nerdfonts.com/font-downloads
+- JetBrains を入れる
