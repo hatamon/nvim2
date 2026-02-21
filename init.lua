@@ -17,4 +17,19 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- プラグインの読み込み (lua/plugins/ 以下のファイルを自動で読み込む)
-require("lazy").setup("plugins")
+require("lazy").setup({
+  spec = {
+    { import = "plugins" },
+  },
+  defaults = {
+    -- VSCode の時は、各プラグインで明示的に `cond = true` と書かない限りロードしない
+    cond = function(plugin)
+      -- VSCode じゃないなら常にロード
+      if not vim.g.vscode then return true end
+      
+      -- VSCode の時：
+      -- 各プラグイン設定で個別に `vscode = true` と書いてあるものだけロードする
+      return plugin.vscode == true
+    end,
+  },
+})

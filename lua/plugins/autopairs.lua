@@ -2,6 +2,7 @@
 return {
   {
     "windwp/nvim-autopairs",
+    vscode = true, -- vscode でも使う
     event = "InsertEnter", -- インサートモードに入った時に読み込む
     config = function()
       local autopairs = require("nvim-autopairs")
