@@ -16,20 +16,19 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- プラグインの読み込み (lua/plugins/ 以下のファイルを自動で読み込む)
+local spec = {
+  -- 共通プラグインは常に読み込む
+  { import = "plugins.common" },
+}
+
+if vim.g.vscode then
+  -- VSCode内なら vscode フォルダのみ読み込む
+  table.insert(spec, { import = "plugins.vscode" })
+else
+  -- 通常のNeovimなら nvim フォルダを読み込む
+  table.insert(spec, { import = "plugins.nvim" })
+end
+
 require("lazy").setup({
-  spec = {
-    { import = "plugins" },
-  },
-  defaults = {
-    -- VSCode の時は、各プラグインで明示的に `cond = true` と書かない限りロードしない
-    cond = function(plugin)
-      -- VSCode じゃないなら常にロード
-      if not vim.g.vscode then return true end
-      
-      -- VSCode の時：
-      -- 各プラグイン設定で個別に `vscode = true` と書いてあるものだけロードする
-      return plugin.vscode == true
-    end,
-  },
+  spec = spec,
 })
