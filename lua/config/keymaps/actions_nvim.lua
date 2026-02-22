@@ -26,6 +26,7 @@ return {
   -- none-ls
   buffer_format = "<cmd>lua vim.lsp.buf.format()<cr>",
   definition_go = vim.lsp.buf.definition,
+  find_references = function() require("telescope.builtin").lsp_references() end,
   hover = vim.lsp.buf.hover,
   rename = vim.lsp.buf.rename,
   code_action = vim.lsp.buf.code_action,

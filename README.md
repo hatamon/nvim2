@@ -34,3 +34,6 @@ copy Release\libfzf.dll .
 ### フォント
 - https://www.nerdfonts.com/font-downloads
 - JetBrains を入れる
+
+### vscode
+- vscodeSettings/keybindings.json の内容を vscode の同ファイルに追加する

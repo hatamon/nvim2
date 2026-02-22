@@ -30,10 +30,11 @@ return {
   none_ls = {
     { "<leader>fo", "buffer_format", "Format Document" },
     { "<leader>dg", "definition_go", "Go to Definition" },
+    { "<leader>dr", "find_references", "Find References" },
     { "K", "hover", "Hover Info" },
     { "<leader>rn", "rename", "Rename" },
     { "<leader>.", "code_action", "Code Action" },
-    { "<leader>de", "diagnostic_open", "Diagnostic Open" }, -- エラー詳細表示
+    { "<leader>do", "diagnostic_open", "Diagnostic Open" }, -- エラー詳細表示
     { "[d", "diagnostic_prev_error", "prev error" }, -- 前のエラーへ
     { "]d", "diagnostic_next_error", "next error" }, -- 次のエラーへ
   },

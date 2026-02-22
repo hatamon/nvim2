@@ -33,6 +33,7 @@ return {
   -- none-ls
   buffer_format = action("editor.action.formatDocument"),
   definition_go = action("editor.action.revealDefinition"),
+  find_references = action("editor.action.goToReferences"),
   hover = action("editor.action.showHover"),
   rename = action("editor.action.rename"),
   code_action = action("editor.action.quickFix"),
