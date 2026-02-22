@@ -54,6 +54,8 @@ return {
               separator = true,
             },
           },
+		  close_command = "Bdelete %d",
+		  right_mouse_command = "Bdelete %d",
         },
       })
     end,
@@ -110,6 +112,7 @@ return {
   {
     "famiu/bufdelete.nvim",
     keys = require("config.keymaps.helper").get_keys_for("bufdelete"),
+    cmd = {"Bdelete"},
   },
 
   -- toogle term
