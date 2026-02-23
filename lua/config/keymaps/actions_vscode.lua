@@ -57,7 +57,8 @@ return {
   bufdelete = {
     actions = {
       buffer_delete = call("workbench.action.closeActiveEditor"),
-      buffer_all_delete = call("workbench.action.closeAllEditors"),
+      buffer_delete_all = call("workbench.action.closeAllEditors"),
+      buffer_delete_others = call("workbench.action.closeOtherEditors"),
     },
   },
   none_ls = {

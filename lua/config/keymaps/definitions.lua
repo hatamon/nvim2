@@ -33,7 +33,8 @@ return {
   },
   bufdelete = {
     { "<leader>x", "buffer_delete", "Delete Buffer" },
-    { "<leader>ba", "buffer_all_delete", "Delete All Buffers" },
+    { "<leader>ba", "buffer_delete_all", "Delete All Buffers" },
+    { "<leader>bo", "buffer_delete_others", "Delete Other Buffers" },
   },
   none_ls = {
     { "<leader>fo", "buffer_format", "Format Document" },

@@ -137,6 +137,24 @@ return {
         end
         print("All buffers processed with Bdelete!")
       end, {})
+
+      vim.api.nvim_create_user_command("BdeleteOthers", function()
+        local current_buf = vim.api.nvim_get_current_buf()
+        local buffers = vim.api.nvim_list_bufs()
+
+        for _, bufnr in ipairs(buffers) do
+          -- 1. 現在のバッファではない
+          -- 2. 有効なバッファである
+          -- 3. バッファリストに載っている（ファイルである）
+          if bufnr ~= current_buf and vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted then
+            -- Bdelete を実行（未保存があれば停止する安全設計）
+            pcall(function()
+              vim.cmd("Bdelete " .. bufnr)
+            end)
+          end
+        end
+        print("Only this buffer left!")
+      end, {})
     end,
   },
 
