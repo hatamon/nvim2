@@ -2,6 +2,7 @@
 return {
   {
     "lewis6991/gitsigns.nvim",
+    cmd = require("config.keymaps.helper").get_cmd_for("git"),
     keys = require("config.keymaps.helper").get_keys_for("git"),
     config = function()
       require("gitsigns").setup({

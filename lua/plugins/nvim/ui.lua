@@ -3,13 +3,14 @@ return {
   -- File Tree
   {
     "nvim-neo-tree/neo-tree.nvim",
+    cmd = require("config.keymaps.helper").get_cmd_for("neotree"),
+    keys = require("config.keymaps.helper").get_keys_for("neotree"),
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    keys = require("config.keymaps.helper").get_keys_for("neotree"),
     config = function()
       require("neo-tree").setup({
         window = {
@@ -111,13 +112,15 @@ return {
   -- バッファを賢く消すプラグイン
   {
     "famiu/bufdelete.nvim",
+    cmd = require("config.keymaps.helper").get_cmd_for("bufdelete"),
     keys = require("config.keymaps.helper").get_keys_for("bufdelete"),
-    cmd = {"Bdelete"},
   },
 
   -- toogle term
   {
     "akinsho/toggleterm.nvim",
+    cmd = require("config.keymaps.helper").get_cmd_for("toggleterm"),
+    keys = require("config.keymaps.helper").get_keys_for("toggleterm"),
     version = "*",
     opts = {
       size = 20,

@@ -2,16 +2,21 @@
 return {
   -- { キー, アクションID, 説明 }
   general = {
-    { "<leader>t", "terminal_toggle", "Toggle Terminal" },
-    { "<C-\\>", "terminal_toggle", "Toggle Terminal", mode = "t" },
-    { "<C-\\>", "terminal_toggle", "Toggle Terminal" },
-    { "<C-]>", "terminal_normal", "Nomarl Mode Terminal ", mode = "t" },
-    { "L", "buffer_next", "Next Buffer" },
-    { "H", "buffer_prev", "Prev Buffer" },
     { "<C-h>", "window_left", "Focus Window Left" },
     { "<C-j>", "window_below", "Focus Window Below" },
     { "<C-k>", "window_above", "Focus Window Above" },
     { "<C-l>", "window_right", "Focus Window Right" },
+    { "Y", "yank", "Yank" },
+  },
+  bufferline = {
+    { "L", "buffer_next", "Next Buffer" },
+    { "H", "buffer_prev", "Prev Buffer" },
+  },
+  toggleterm = {
+    { "<leader>t", "terminal_toggle", "Toggle Terminal" },
+    { "<C-\\>", "terminal_toggle", "Toggle Terminal", mode = "t" },
+    { "<C-\\>", "terminal_toggle", "Toggle Terminal" },
+    { "<C-]>", "terminal_normal", "Nomarl Mode Terminal ", mode = "t" },
   },
   telescope = {
     { "<leader>ff", "find_files", "Find Files" },

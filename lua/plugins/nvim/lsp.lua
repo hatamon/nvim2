@@ -15,23 +15,26 @@ return {
         handlers = {
           -- 第一引数（名前なし）がデフォルトのハンドラーになる
           function(server_name)
-            require("lspconfig")[server_name].setup({})
-            if server_name == "lua_ls" then
-              require("lspconfig").lua_ls.setup({
-                settings = {
-                  Lua = {
-                    format = {
-                      enable = false,
-                    },
-                  },
-                },
-              })
-            end
+            vim.lsp.config(server_name, {})
+            -- if server_name == "lua_ls" then
+            --   vim.lsp.config("lua_ls", {
+            --     settings = {
+            --       Lua = {
+            --         format = {
+            --           enable = false,
+            --         },
+            --         codeLens = {
+            --           enable = false,
+            --         }
+            --       },
+            --     },
+            --   })
+            -- end
           end,
           -- ここに lua_ls 専用のハンドラを追加して、設定をズバッ！と注入する
           ["lua_ls"] = function()
-            require("lspconfig").lua_ls.setup({
-              settings = {
+            vim.lsp.config("lua_ls", {
+              Settings = {
                 Lua = {
                   format = {
                     enable = false,

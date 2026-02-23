@@ -1,11 +1,23 @@
 local M = {}
 
+function M.get_cmd_for(plugin_name)
+  local all_actions = require("config.keymaps.actions_nvim") -- Lazyは基本的にNeovim用
+  local cmd = all_actions[plugin_name].cmd
+
+  if not cmd then
+    return {}
+  end
+
+  return cmd
+end
+
 function M.get_keys_for(plugin_name)
   local all_defs = require("config.keymaps.definitions")
-  local actions = require("config.keymaps.actions_nvim") -- Lazyは基本的にNeovim用
+  local all_actions = require("config.keymaps.actions_nvim") -- Lazyは基本的にNeovim用
   local plugin_defs = all_defs[plugin_name]
+  local actions = all_actions[plugin_name].actions
 
-  if not plugin_defs then
+  if not plugin_defs or not actions then
     return {}
   end
 
