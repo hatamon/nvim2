@@ -1,3 +1,7 @@
+local function utils()
+  return require("config.keymaps.actions_utils")
+end
+
 return {
   general = {
     actions = {
@@ -5,7 +9,9 @@ return {
       window_below = "<C-w>j",
       window_above = "<C-w>k",
       window_right = "<C-w>l",
-      yank = "yy",
+      yank = utils().yank,
+      branch_paste_current = utils().paste_current_branch,
+      register_paste = utils().paste_from_register,
     },
   },
   bufferline = {
@@ -47,16 +53,17 @@ return {
   },
   none_ls = {
     actions = {
-      -- buffer_format = "<cmd>lua vim.lsp.buf.format()<cr>",
       buffer_format = "<cmd>lua require('conform').format({ timeout_ms = 5000 })<cr>",
-      definition_go = vim.lsp.buf.definition,
-      find_references = function() require("telescope.builtin").lsp_references() end,
-      hover = vim.lsp.buf.hover,
-      rename = vim.lsp.buf.rename,
-      code_action = vim.lsp.buf.code_action,
-      diagnostic_open = vim.diagnostic.open_float,
-      diagnostic_prev_error = vim.diagnostic.goto_prev,
-      diagnostic_next_error = vim.diagnostic.goto_next,
+      definition_go = "<cmd>lua vim.lsp.buf.definition()<cr>",
+      find_references = function()
+        require("telescope.builtin").lsp_references()
+      end,
+      hover = "<cmd>lua vim.lsp.buf.hover()<cr>",
+      rename = "<cmd>lua vim.lsp.buf.rename()<cr>",
+      code_action = "<cmd>lua vim.lsp.buf.code_action()<cr>",
+      diagnostic_open = "<cmd>lua vim.diagnostic.open_float()<cr>",
+      diagnostic_prev_error = "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+      diagnostic_next_error = "<cmd>lua vim.diagnostic.goto_next()<cr>",
     },
   },
   git = {

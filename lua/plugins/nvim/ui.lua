@@ -55,8 +55,8 @@ return {
               separator = true,
             },
           },
-		  close_command = "Bdelete %d",
-		  right_mouse_command = "Bdelete %d",
+          close_command = "Bdelete %d",
+          right_mouse_command = "Bdelete %d",
         },
       })
     end,
@@ -123,6 +123,8 @@ return {
     keys = require("config.keymaps.helper").get_keys_for("toggleterm"),
     version = "*",
     opts = {
+      shell = (jit.os == "Windows") and "pwsh" or null,
+      shellcmdflag = (jit.os == "Windows") and "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command" or null,
       size = 20,
       direction = "float", -- デフォルトをフロートに設定
       float_opts = {

@@ -7,6 +7,8 @@ return {
     { "<C-k>", "window_above", "Focus Window Above" },
     { "<C-l>", "window_right", "Focus Window Right" },
     { "Y", "yank", "Yank" },
+    { "<C-V>cb", "branch_paste_current", "Paste Current Branch", mode = "t" },
+    { "<C-V>p", "register_paste", "Paste From Register", mode = "t" },
   },
   bufferline = {
     { "L", "buffer_next", "Next Buffer" },
@@ -34,9 +36,11 @@ return {
   },
   none_ls = {
     { "<leader>fo", "buffer_format", "Format Document" },
+    { "<F12>", "definition_go", "Go to Definition" },
     { "<leader>dg", "definition_go", "Go to Definition" },
     { "<leader>dr", "find_references", "Find References" },
     { "K", "hover", "Hover Info" },
+    { "<F2>", "rename", "Rename" },
     { "<leader>rn", "rename", "Rename" },
     { "<leader>.", "code_action", "Code Action" },
     { "<leader>do", "diagnostic_open", "Diagnostic Open" }, -- エラー詳細表示

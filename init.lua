@@ -1,3 +1,8 @@
+-- 標準のファイラー netrw を無効化する
+-- これをやらないと neo-tree と喧嘩することがある
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 -- 基本設定の読み込み
 require("config.options")
 require("config.keymaps")

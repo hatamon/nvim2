@@ -5,6 +5,10 @@ local function action(id)
   end
 end
 
+local function utils()
+  return require("actions_utils")
+end
+
 return {
   general = {
     actions = {
@@ -12,7 +16,9 @@ return {
       window_below = "", --action("workbench.action.navigateDown"),
       window_above = "", --action("workbench.action.navigateUp"),
       window_right = "", --action("workbench.action.navigateRight"),
-      yank = "yy",
+      yank = utils().yank,
+      branch_paste_current = utils().paste_current_branch,
+      register_paste = utils().paste_from_register,
     },
   },
   bufferline = {

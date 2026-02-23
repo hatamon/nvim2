@@ -1,7 +1,5 @@
 -- lua/config/keymaps.lua
 
-local keymap = vim.keymap
-
 local all_defs = require("config.keymaps.definitions")
 local all_actions = vim.g.vscode and require("config.keymaps.actions_vscode") or require("config.keymaps.actions_nvim")
 
@@ -17,7 +15,8 @@ for group_name, defs in pairs(all_defs) do
       local target = actions[action_id]
 
       if target then
-        vim.keymap.set(def.mode or "n", key, target, { silent = true, desc = desc })
+        local expr = (type(target) == "function") and true or false
+        vim.keymap.set(def.mode or "n", key, target, { silent = true, desc = desc, expr = expr })
       else
         -- アクション未定義時の警告
         local env = vim.g.vscode and "VSCode" or "Neovim"
