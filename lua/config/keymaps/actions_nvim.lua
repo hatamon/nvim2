@@ -47,7 +47,8 @@ return {
   },
   none_ls = {
     actions = {
-      buffer_format = "<cmd>lua vim.lsp.buf.format()<cr>",
+      -- buffer_format = "<cmd>lua vim.lsp.buf.format()<cr>",
+      buffer_format = "<cmd>lua require('conform').format({ timeout_ms = 5000 })<cr>",
       definition_go = vim.lsp.buf.definition,
       find_references = function() require("telescope.builtin").lsp_references() end,
       hover = vim.lsp.buf.hover,

@@ -1,59 +1,37 @@
 -- lua/plugins/lsp.lua
+--
+--                 ┌─────────────────┐
+--                 │ Neovim LSP Core │
+--                 └────────┬────────┘
+--                          │
+--            vim.lsp.config / enable
+--                          │
+--         ┌────────────────┼──────────────┐
+--         │                                │
+--   nvim-lspconfig                  none-ls.nvim
+--  (LSP定義集)                    (fake LSP)
+--         │                                │
+--         └──────────────┬─────────────────┘
+--                        │
+--                    mason.nvim
+--                        │
+--         ┌──────────────┴──────────────┐
+--         │                             │
+-- mason-lspconfig              mason-null-ls
+-- (LSP install)                (formatter install)
+
 return {
   {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
-    config = function()
-      require("mason").setup()
-
-      require("mason-lspconfig").setup({
-        ensure_installed = { "ts_ls", "omnisharp", "lua_ls" },
-        -- これが最新の書き方！setupの中にhandlersを書くよ
-        handlers = {
-          -- 第一引数（名前なし）がデフォルトのハンドラーになる
-          function(server_name)
-            vim.lsp.config(server_name, {})
-            -- if server_name == "lua_ls" then
-            --   vim.lsp.config("lua_ls", {
-            --     settings = {
-            --       Lua = {
-            --         format = {
-            --           enable = false,
-            --         },
-            --         codeLens = {
-            --           enable = false,
-            --         }
-            --       },
-            --     },
-            --   })
-            -- end
-          end,
-          -- ここに lua_ls 専用のハンドラを追加して、設定をズバッ！と注入する
-          ["lua_ls"] = function()
-            vim.lsp.config("lua_ls", {
-              Settings = {
-                Lua = {
-                  format = {
-                    enable = false,
-                  },
-                },
-              },
-            })
-          end,
-        },
-      })
-    end,
-  },
-  -- 1. Mason本体
-  {
     "williamboman/mason.nvim",
-    opts = { ensure_installed = { "stylua", "prettier", "eslint_d" } },
+    opts = {},
   },
-
-  -- 2. 橋渡し役 (これを入れると自動で none-ls と繋いでくれる！)
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = { "ts_ls", "omnisharp", "lua_ls" },
+      automatic_installation = true,
+    },
+  },
   {
     "jay-babu/mason-null-ls.nvim",
     dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
@@ -62,13 +40,28 @@ return {
       automatic_installation = true,
     },
   },
-
-  -- 3. none-ls 本体
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      vim.lsp.config("lua_ls", {
+        on_attach = function(client)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+        end,
+      })
+      vim.lsp.enable("lua_ls")
+    end,
+  },
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvimtools/none-ls-extras.nvim", -- ここ！追い出された子たちを呼び戻す
     },
+    opts = function()
+      return {
+        root_dir = require("null-ls.utils").root_pattern(".stylua.toml", ".git"),
+      }
+    end,
   },
 }
