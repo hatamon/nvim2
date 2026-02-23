@@ -49,6 +49,7 @@ return {
     cmd = { "Bdelete" },
     actions = {
       buffer_delete = "<cmd>Bdelete<cr>",
+      buffer_all_delete = "<cmd>BdeleteAll<cr>",
     },
   },
   none_ls = {

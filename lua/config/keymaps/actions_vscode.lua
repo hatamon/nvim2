@@ -5,8 +5,14 @@ local function action(id)
   end
 end
 
+local function call(id)
+  return function()
+    require("vscode").call(id)
+  end
+end
+
 local function utils()
-  return require("actions_utils")
+  return require("config.keymaps.actions_utils")
 end
 
 return {
@@ -50,7 +56,8 @@ return {
   },
   bufdelete = {
     actions = {
-      buffer_delete = action("workbench.action.closeActiveEditor"),
+      buffer_delete = call("workbench.action.closeActiveEditor"),
+      buffer_all_delete = call("workbench.action.closeAllEditors"),
     },
   },
   none_ls = {

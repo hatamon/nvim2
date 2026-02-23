@@ -114,6 +114,30 @@ return {
     "famiu/bufdelete.nvim",
     cmd = require("config.keymaps.helper").get_cmd_for("bufdelete"),
     keys = require("config.keymaps.helper").get_keys_for("bufdelete"),
+    config = function()
+      -- すべてのバッファを Bdelete で閉じるコマンド
+      vim.api.nvim_create_user_command("BdeleteAll", function()
+        -- 現在ロードされている全バッファを取得
+        local buffers = vim.api.nvim_list_bufs()
+
+        for _, bufnr in ipairs(buffers) do
+          -- バッファが有効（存在する）かつ、リストに表示されるものだけ対象にする
+          if vim.api.nvim_buf_is_valid(bufnr) and vim.bo[bufnr].buflisted then
+            -- Bdelete を実行。未保存なら停止するように force は false に
+            -- もし強制したいなら、pcall 内のコマンドを "Bdelete!" に変えてね
+            local success, err = pcall(function()
+              vim.cmd("Bdelete " .. bufnr)
+            end)
+
+            if not success then
+              -- 未保存ファイルなどで失敗した場合はメッセージを出す
+              print("Skipped: " .. vim.fn.bufname(bufnr) .. " (unsaved?)")
+            end
+          end
+        end
+        print("All buffers processed with Bdelete!")
+      end, {})
+    end,
   },
 
   -- toogle term
