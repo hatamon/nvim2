@@ -42,26 +42,11 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    config = function()
-      vim.lsp.config("lua_ls", {
-        on_attach = function(client)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-      })
-      vim.lsp.enable("lua_ls")
-    end,
   },
   {
     "nvimtools/none-ls.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvimtools/none-ls-extras.nvim", -- ここ！追い出された子たちを呼び戻す
     },
-    opts = function()
-      return {
-        root_dir = require("null-ls.utils").root_pattern(".stylua.toml", ".git"),
-      }
-    end,
   },
 }
