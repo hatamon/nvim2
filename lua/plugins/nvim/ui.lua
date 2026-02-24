@@ -15,6 +15,14 @@ return {
         window = {
           width = 30,
         },
+        filesystem = {
+          -- ここが同期の肝！
+          follow_current_file = {
+            enabled = true, -- これを true にすると同期が始まるよ
+            leave_dirs_open = false, -- trueにすると、一度開いたフォルダを閉じずに残すよ
+          },
+          use_libuv_file_watcher = true, -- ファイルの増減もリアルタイムで反映されるようになるよ
+        },
       })
     end,
   },
