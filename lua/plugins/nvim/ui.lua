@@ -5,6 +5,7 @@ return {
     "nvim-neo-tree/neo-tree.nvim",
     cmd = require("config.keymaps.helper").get_cmd_for("neotree"),
     keys = require("config.keymaps.helper").get_keys_for("neotree"),
+    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
