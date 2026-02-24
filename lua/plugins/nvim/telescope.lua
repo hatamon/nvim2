@@ -7,7 +7,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       -- 検索を爆速にする拡張
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = jit.os == "Windows" and "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release --target install" or "make" },
     },
     config = function()
       local telescope = require("telescope")
