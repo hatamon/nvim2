@@ -20,7 +20,7 @@ return {
     eslint_d.cwd = getCwd()
     eslint_d.args = vim.list_extend(eslint_d.args or {}, {
       "--rule",
-      '"prettier/prettier": [ "error", { "endOfLine": "auto" }]',
+      '"prettier/prettier": [ "error", { "endOfLine": "auto", "insertFinalNewline": "true" }]',
     })
 
     lint.linters_by_ft = {
