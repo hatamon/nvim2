@@ -4,7 +4,9 @@ return {
     event = "VeryLazy",
     lazy = false,
     version = false, -- 最新の機能を反映
-    build = "make", -- ビルド必須
+    build = vim.fn.has("win32") ~= 0
+      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+      or "make",
     opts = {
       provider = "copilot", -- 標準で Copilot を使用
       auto_suggestions_provider = "copilot",
