@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     lazy = false,
     version = false, -- 最新の機能を反映
-    build = jis.os == "Windows"
+    build = jit.os == "Windows"
       and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
     opts = {
