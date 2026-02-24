@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     lazy = false,
     version = false, -- 最新の機能を反映
-    build = vim.fn.has("win32") ~= 0
+    build = jis.os == "Windows"
       and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
     opts = {
