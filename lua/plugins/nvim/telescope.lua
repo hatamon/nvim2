@@ -4,7 +4,6 @@ return {
     "nvim-telescope/telescope.nvim",
     cmd = require("config.keymaps.helper").get_cmd_for("telescope"),
     keys = require("config.keymaps.helper").get_keys_for("telescope"),
-    branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       -- 検索を爆速にする拡張
@@ -22,6 +21,7 @@ return {
           },
           -- ファイル検索から除外するもの
           file_ignore_patterns = { "node_modules", ".git/", "bin/", "obj/" },
+          path_display = { "filename_first" },
         },
       })
 
