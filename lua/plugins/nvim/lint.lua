@@ -18,6 +18,10 @@ return {
       }, { upward = true, path = vim.api.nvim_buf_get_name(0) })[1])
     end
     eslint_d.cwd = getCwd()
+    eslint_d.args = vim.list_extend(eslint_d.args or {}, {
+      "--rule",
+      '"prettier/prettier": [ "error", { "endOfLine": "auto" }]',
+    })
 
     lint.linters_by_ft = {
       javascript = { "eslint_d" },
@@ -27,15 +31,12 @@ return {
     }
 
     -- 保存時やバッファを離れた時に実行
-    vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave" }, {
+    local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+    vim.api.nvim_create_autocmd({ "BufWritePost", "BufReadPost", "InsertLeave", "CursorHold" }, {
+      group = lint_augroup,
       callback = function()
         lint.try_lint()
       end,
     })
-
-    -- 手動で呼び出すためのコマンドも作っておくよ
-    vim.api.nvim_create_user_command("LintInfo", function()
-      print("Configured linters: " .. vim.inspect(lint.linters_by_ft[vim.bo.filetype]))
-    end, {})
   end,
 }

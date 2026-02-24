@@ -18,10 +18,10 @@ end
 return {
   general = {
     actions = {
-      window_left = "", --action("workbench.action.navigateLeft"),
-      window_below = "", --action("workbench.action.navigateDown"),
-      window_above = "", --action("workbench.action.navigateUp"),
-      window_right = "", --action("workbench.action.navigateRight"),
+      window_left = "", --call("workbench.action.navigateLeft"),
+      window_below = "", --call("workbench.action.navigateDown"),
+      window_above = "", --call("workbench.action.navigateUp"),
+      window_right = "", --call("workbench.action.navigateRight"),
       yank = utils().yank,
       branch_paste_current = utils().paste_current_branch,
       register_paste = utils().paste_from_register,
@@ -29,20 +29,20 @@ return {
   },
   bufferline = {
     actions = {
-      buffer_next = action("workbench.action.nextEditor"),
-      buffer_prev = action("workbench.action.previousEditor"),
+      buffer_next = call("workbench.action.nextEditor"),
+      buffer_prev = call("workbench.action.previousEditor"),
     },
   },
   toggleterm = {
     actions = {
-      terminal_toggle = action("workbench.action.terminal.toggleTerminal"),
+      terminal_toggle = call("workbench.action.terminal.toggleTerminal"),
       terminal_normal = "",
     },
   },
   telescope = {
     actions = {
-      find_files = action("workbench.action.quickOpen"),
-      live_grep = action("workbench.view.search"),
+      find_files = call("workbench.action.quickOpen"),
+      live_grep = call("workbench.view.search"),
       buffers = "",
       help_tags = "",
       oldfiles = "",
@@ -50,8 +50,8 @@ return {
   },
   neotree = {
     actions = {
-      explorer_toggle = action("workbench.action.toggleSidebarVisibility"),
-      explorer_focus = action("workbench.view.explorer"),
+      explorer_toggle = call("workbench.action.toggleSidebarVisibility"),
+      explorer_focus = call("workbench.view.explorer"),
     },
   },
   bufdelete = {
@@ -63,25 +63,25 @@ return {
   },
   none_ls = {
     actions = {
-      buffer_format = action("editor.action.formatDocument"),
-      definition_go = action("editor.action.revealDefinition"),
-      find_references = action("editor.action.goToReferences"),
-      hover = action("editor.action.showHover"),
-      rename = action("editor.action.rename"),
-      code_action = action("editor.action.quickFix"),
-      diagnostic_open = action("workbench.action.problems.focus"),
-      diagnostic_prev_error = action("editor.action.marker.prev"),
-      diagnostic_next_error = action("editor.action.marker.next"),
+      buffer_format = call("editor.action.formatDocument"),
+      definition_go = call("editor.action.revealDefinition"),
+      find_references = call("editor.action.goToReferences"),
+      hover = call("editor.action.showHover"),
+      rename = call("editor.action.rename"),
+      code_action = call("editor.action.quickFix"),
+      diagnostic_open = call("workbench.action.problems.focus"),
+      diagnostic_prev_error = call("editor.action.marker.prev"),
+      diagnostic_next_error = call("editor.action.marker.next"),
     },
   },
   git = {
     actions = {
-      git_next_hunk = action("workbench.action.editor.nextChange"),
-      git_prev_hunk = action("workbench.action.editor.previousChange"),
+      git_next_hunk = call("workbench.action.editor.nextChange"),
+      git_prev_hunk = call("workbench.action.editor.previousChange"),
       git_preview_hunk = "",
       git_blame_line = "",
       git_diffthis = "",
-      git_reset_hunk = action("git.revertChange")
+      git_reset_hunk = call("git.revertChange")
     },
   },
 }
