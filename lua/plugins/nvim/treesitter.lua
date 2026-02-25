@@ -31,4 +31,16 @@ return {
       vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, sp = "Grey" })
     end,
   },
+  {
+    "windwp/nvim-ts-autotag",
+    event = { "BufReadPre", "BufNewFile" }, -- ファイルを開いた時に読み込む
+    opts = {
+      -- v1.0 の標準的な設定だよ
+      opts = {
+        enable_close = true, -- 閉じタグを自動で作る
+        enable_rename = true, -- 開始タグを変えたら閉じタグも変える
+        enable_close_on_slash = true, -- </ と打ったら閉じる
+      },
+    },
+  },
 }

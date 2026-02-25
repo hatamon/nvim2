@@ -12,6 +12,7 @@ return {
       yank = utils().yank,
       branch_paste_current = utils().paste_current_branch,
       register_paste = utils().paste_from_register,
+      signature_help = "<cmd>lua vim.lsp.buf.signature_help()<cr>",
     },
   },
   bufferline = {

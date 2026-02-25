@@ -25,6 +25,7 @@ return {
       yank = utils().yank,
       branch_paste_current = utils().paste_current_branch,
       register_paste = utils().paste_from_register,
+      signature_help = call("editor.action.triggerParameterHints"),
     },
   },
   bufferline = {

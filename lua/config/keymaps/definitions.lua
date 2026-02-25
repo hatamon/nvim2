@@ -9,6 +9,7 @@ return {
     { "Y", "yank", "Yank" },
     { "<C-V>cb", "branch_paste_current", "Paste Current Branch", mode = "t" },
     { "<C-V>p", "register_paste", "Paste From Register", mode = "t" },
+    { "<C-k>", "signature_help", "Signature Help", mode = "i" },
   },
   bufferline = {
     { "L", "buffer_next", "Next Buffer" },
