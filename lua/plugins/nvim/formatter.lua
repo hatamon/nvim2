@@ -12,6 +12,7 @@ return {
       markdown = { "prettier" },
       yaml = { "prettier" },
       lua = { "stylua" },
+      cs = { lsp_format = "fallback" },
       -- ほか必要に応じて
     },
     formatters = {
