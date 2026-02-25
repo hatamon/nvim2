@@ -4,8 +4,7 @@ return {
     event = "VeryLazy",
     lazy = false,
     version = false, -- 最新の機能を反映
-    build = jit.os == "Windows"
-      and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
+    build = jit.os == "Windows" and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
       or "make",
     opts = {
       provider = "copilot", -- 標準で Copilot を使用
@@ -35,7 +34,13 @@ return {
         "zbirenbaum/copilot.lua", -- Copilot 本体
         cmd = "Copilot",
         opts = {
-          suggestion = { enabled = false },
+          suggestion = {
+            enabled = true,
+            auto_trigger = true, -- 勝手に考えて出してくれる！
+            keymap = {
+              accept = "<C-l>", -- Alt + l で確定（殿の好きなキーに変えられるよ）
+            },
+          },
           panel = { enabled = false },
         },
       },
