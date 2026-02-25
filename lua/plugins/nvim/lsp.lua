@@ -28,25 +28,14 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "ts_ls", "omnisharp", "lua_ls" },
+      ensure_installed = { "ts_ls", "lua_ls" },
       automatic_installation = true,
     },
   },
   {
-    "jay-babu/mason-null-ls.nvim",
-    dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = { "stylua", "prettier", "eslint_d" },
-      automatic_installation = true,
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
     },
   },
 }
