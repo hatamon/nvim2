@@ -44,6 +44,9 @@ return {
     },
   },
   {
+    "neovim/nvim-lspconfig",
+  },
+  {
     "seblyng/roslyn.nvim",
     ---@module 'roslyn.config'
     ---@type RoslynNvimConfig
