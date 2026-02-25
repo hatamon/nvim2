@@ -23,7 +23,12 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = {},
+    opts = {
+      registries = {
+        "github:mason-org/mason-registry", -- 標準
+        "github:Crashdummyy/mason-registry", -- Roslyn 用の裏ルート！
+      },
+    },
   },
   {
     "williamboman/mason-lspconfig.nvim",
@@ -36,6 +41,14 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     opts = {
       ensure_installed = { "stylua", "prettier", "eslint_d" },
+    },
+  },
+  {
+    "seblyng/roslyn.nvim",
+    ---@module 'roslyn.config'
+    ---@type RoslynNvimConfig
+    opts = {
+      -- your configuration comes here; leave empty for default settings
     },
   },
 }

@@ -37,3 +37,6 @@ copy Release\libfzf.dll .
 
 ### vscode
 - vscodeSettings/keybindings.json の内容を vscode の同ファイルに追加する
+
+### roslyn
+- 自動インストールされないので Mason 開いて自分でインストールしないとだめ
