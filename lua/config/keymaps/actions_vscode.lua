@@ -44,9 +44,11 @@ return {
     actions = {
       find_files = call("workbench.action.quickOpen"),
       live_grep = call("workbench.view.search"),
+      grep_string = call("workbench.action.findInFiles"),
       buffers = "",
       help_tags = "",
       oldfiles = "",
+      resume = "",
     },
   },
   neotree = {
@@ -70,7 +72,8 @@ return {
       hover = call("editor.action.showHover"),
       rename = call("editor.action.rename"),
       code_action = call("editor.action.quickFix"),
-      diagnostic_open = call("workbench.action.problems.focus"),
+      diagnostic_current_line = call("editor.action.diagnostic.show"),
+      diagnostic_current_buffer = call("workbench.action.problems.focus"),
       diagnostic_prev_error = call("editor.action.marker.prev"),
       diagnostic_next_error = call("editor.action.marker.next"),
     },

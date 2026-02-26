@@ -24,9 +24,11 @@ return {
   telescope = {
     { "<leader>ff", "find_files", "Find Files" },
     { "<leader>fg", "live_grep", "Live Grep" },
+    { "<leader>fG", "grep_string", "Grep String" },
     { "<leader>fb", "buffers", "Buffers" },
     { "<leader>fh", "help_tags", "Help Tags" },
     { "<leader>fr", "oldfiles", "Recent Files" },
+    { "<leader>fR", "resume", "Resume" },
   },
   neotree = {
     { "<leader>e", "explorer_toggle", "Explorer Toggle" },
@@ -46,7 +48,8 @@ return {
     { "<F2>", "rename", "Rename" },
     { "<leader>rn", "rename", "Rename" },
     { "<leader>.", "code_action", "Code Action" },
-    { "<leader>do", "diagnostic_open", "Diagnostic Open" }, -- エラー詳細表示
+    { "<leader>dl", "diagnostic_current_line", "Diagnostic Open Current Line" }, -- エラー詳細表示
+    { "<leader>db", "diagnostic_current_buffer", "Diagnostic Open Current Buffer" }, -- エラー詳細表示
     { "[d", "diagnostic_prev_error", "prev error" }, -- 前のエラーへ
     { "]d", "diagnostic_next_error", "next error" }, -- 次のエラーへ
   },

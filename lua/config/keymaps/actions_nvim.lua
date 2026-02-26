@@ -34,9 +34,11 @@ return {
     actions = {
       find_files = "<cmd>Telescope find_files<cr>",
       live_grep = "<cmd>Telescope live_grep<cr>",
+      grep_string = "<cmd>Telescope grep_string<cr>",
       buffers = "<cmd>Telescope buffers<cr>",
       help_tags = "<cmd>Telescope help_tags<cr>",
       oldfiles = "<cmd>Telescope oldfiles<cr>",
+      resume = "<cmd>Telescope resume<cr>",
     },
   },
   neotree = {
@@ -64,7 +66,8 @@ return {
       hover = "<cmd>lua vim.lsp.buf.hover()<cr>",
       rename = "<cmd>lua vim.lsp.buf.rename()<cr>",
       code_action = "<cmd>lua vim.lsp.buf.code_action()<cr>",
-      diagnostic_open = "<cmd>lua vim.diagnostic.open_float()<cr>",
+      diagnostic_current_line = "<cmd>lua vim.diagnostic.open_float()<cr>",
+      diagnostic_current_buffer = "<cmd>Telesope diagnostic<cr>",
       diagnostic_prev_error = "<cmd>lua vim.diagnostic.goto_prev()<cr>",
       diagnostic_next_error = "<cmd>lua vim.diagnostic.goto_next()<cr>",
     },
