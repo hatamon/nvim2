@@ -102,6 +102,12 @@ return {
         group = "󰾆 ",
         rules = false,
       },
+      plugins = {
+        registers = false, -- これでレジスタが出なくなるよ！
+        -- ついでにこれもいらないなら false にしちゃおう
+        marks = false, -- マーク一覧
+        spelling = false, -- スペルチェック候補
+      },
     },
     config = function(_, opts)
       local wk = require("which-key")

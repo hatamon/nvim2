@@ -60,6 +60,7 @@ return {
     actions = {
       buffer_format = "<cmd>lua require('conform').format({ timeout_ms = 5000 })<cr>",
       definition_go = "<cmd>lua vim.lsp.buf.definition()<cr>",
+      implementation_go = "<cmd>Telescope lsp_implementations<cr>",
       find_references = function()
         require("telescope.builtin").lsp_references()
       end,

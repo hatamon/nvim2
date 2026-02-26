@@ -68,6 +68,7 @@ return {
     actions = {
       buffer_format = call("editor.action.formatDocument"),
       definition_go = call("editor.action.revealDefinition"),
+      implementation_go = call("editor.action.goToImplementation"),
       find_references = call("editor.action.goToReferences"),
       hover = call("editor.action.showHover"),
       rename = call("editor.action.rename"),

@@ -42,7 +42,8 @@ return {
   none_ls = {
     { "<leader>fo", "buffer_format", "Format Document" },
     { "<F12>", "definition_go", "Go to Definition" },
-    { "<leader>dg", "definition_go", "Go to Definition" },
+    { "<leader>dd", "definition_go", "Go to Definition" },
+    { "<leader>di", "implementation_go", "Go to Implementation" },
     { "<leader>dr", "find_references", "Find References" },
     { "K", "hover", "Hover Info" },
     { "<F2>", "rename", "Rename" },
