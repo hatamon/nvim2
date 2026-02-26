@@ -67,7 +67,7 @@ return {
       rename = "<cmd>lua vim.lsp.buf.rename()<cr>",
       code_action = "<cmd>lua vim.lsp.buf.code_action()<cr>",
       diagnostic_current_line = "<cmd>lua vim.diagnostic.open_float()<cr>",
-      diagnostic_current_buffer = "<cmd>Telesope diagnostic<cr>",
+      diagnostic_current_buffer = "<cmd>Telesope diagnostics<cr>",
       diagnostic_prev_error = "<cmd>lua vim.diagnostic.goto_prev()<cr>",
       diagnostic_next_error = "<cmd>lua vim.diagnostic.goto_next()<cr>",
     },
