@@ -54,5 +54,9 @@ end
 -- 3. VSCode専用の設定 (もしあれば)
 -- ==========================================
 if vim.g.vscode then
-  -- VSCode特有の設定が必要な場合はここに書く
+  vim.opt.hidden = true
+  vim.opt.confirm = false
+  vim.opt.swapfile = false
+  vim.opt.backup = false
+  vim.opt.writebackup = false
 end
