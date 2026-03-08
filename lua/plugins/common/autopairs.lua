@@ -6,6 +6,12 @@ return {
     config = function()
       local autopairs = require("nvim-autopairs")
 
+      if vim.g.vscode then
+        -- VSCode拡張機能として動作している場合は、特定の設定を適用
+        autopairs.setup({})
+        return
+      end
+
       autopairs.setup({
         check_ts = true, -- Treesitterを使って精度を上げる（後で効いてくるよ！）
         disable_filetype = { "TelescopePrompt" }, -- 検索窓では無効化
