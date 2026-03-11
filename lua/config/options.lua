@@ -12,6 +12,11 @@ vim.opt.expandtab = true -- スペースに展開
 vim.opt.updatetime = 500
 vim.opt.eol = true
 vim.opt.fixeol = true
+vim.filetype.add({
+  extension = {
+    ino = "cpp",
+  },
+})
 
 -- ==========================================
 -- 2. 通常のNeovim専用 (VSCodeでは不要)
