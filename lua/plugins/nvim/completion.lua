@@ -1,5 +1,24 @@
 -- lua/plugins/completion.lua
 return {
+  -- lua/plugins/copilot.lua
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup({
+        -- 邪魔なサジェストUIはOFF！
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -33,11 +52,12 @@ return {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
+          { name = "copilot", group_index = 2 },
+          { name = "nvim_lsp", group_index = 2 },
+          { name = "luasnip", group_index = 2 },
+          { name = "path", group_index = 2 },
         }, {
-          { name = "buffer" },
+          { name = "buffer", group_index = 2 },
         }),
         formatting = {
           format = lspkind.cmp_format({
