@@ -1,13 +1,12 @@
 -- Cursor (VSCode) の Neovim 拡張用
-local function action(id)
-  return function()
-    require("vscode").action(id)
-  end
-end
-
 local function call(id)
   return function()
-    require("vscode").call(id)
+    -- pcall で囲むことで、エラーを回避できるようにする
+    pcall(function()
+      require("vscode").action(id)
+      -- nvim_feedkeys を入れないと、何かキーを押すまで vscode 側のコマンドが実行されない
+      vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Ignore>", true, false, true), "n", true)
+    end)
   end
 end
 
@@ -86,7 +85,7 @@ return {
       git_preview_hunk = "",
       git_blame_line = "",
       git_diffthis = "",
-      git_reset_hunk = call("git.revertChange")
+      git_reset_hunk = call("git.revertChange"),
     },
   },
 }
