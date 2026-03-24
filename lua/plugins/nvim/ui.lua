@@ -23,6 +23,12 @@ return {
             leave_dirs_open = false, -- trueにすると、一度開いたフォルダを閉じずに残すよ
           },
           use_libuv_file_watcher = true, -- ファイルの増減もリアルタイムで反映されるようになるよ
+          -- hide_gitignored=true（既定）だと git ls-files --ignored が同期実行され、巨大リポで固まる（ls-files.lua）
+          filtered_items = {
+            hide_gitignored = false,
+          },
+          -- Neotree コマンド経由の初回もディレクトリ操作を非同期にし、表示までの待ちを減らす
+          async_directory_scan = "always",
         },
       })
     end,
