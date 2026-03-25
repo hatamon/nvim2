@@ -1,14 +1,24 @@
 [
-    // ctrl+\ をターミナルのトグルにする
+    // Neovim: ctrl+\ は ctrlKeysForNormalMode の対象外のため VS Code 側が受け取る。splitEditor を外したあと
+    // editorTextFocus 用のコマンドが無いとターミナルが開かないので、エディタ／ターミナル両方で toggle を割り当てる。
     {
         "key": "ctrl+oem_5",
         "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
+        "when": "editorTextFocus || terminalFocus || terminalEditorFocus"
     },
-    // ctrl+@ を解除
+    {
+        "key": "ctrl+\\",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "editorTextFocus || terminalFocus || terminalEditorFocus"
+    },
+    // ctrl+@ を解除（意図しない toggle 防止）
     {
         "key": "ctrl+oem_3",
         "command": "-workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
+        "when": "terminalFocus || terminalEditorFocus"
+    },
+    {
+        "key": "ctrl+\\",
+        "command": "-workbench.action.splitEditor"
     }
 ]
