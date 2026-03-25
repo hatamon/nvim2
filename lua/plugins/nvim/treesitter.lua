@@ -5,7 +5,15 @@ return {
     branch = "master",
     opts = {
       ensure_installed = { "lua", "vim", "typescript", "tsx", "c_sharp", "markdown" },
-      highlight = { enable = true },
+      highlight = {
+        enable = true,
+        -- 生成コードや巨大ファイルで TS ハイライトが効きにくい & 重い場合がある
+        disable = function(_, buf)
+          local path = vim.api.nvim_buf_get_name(buf)
+          local ok, st = pcall(vim.uv.fs_stat, path)
+          return ok and st and st.size > 512 * 1024
+        end,
+      },
     },
   },
   {

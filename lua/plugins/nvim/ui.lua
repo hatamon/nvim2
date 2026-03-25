@@ -22,10 +22,17 @@ return {
             enabled = true, -- これを true にすると同期が始まるよ
             leave_dirs_open = false, -- trueにすると、一度開いたフォルダを閉じずに残すよ
           },
-          use_libuv_file_watcher = true, -- ファイルの増減もリアルタイムで反映されるようになるよ
+          -- C# の bin/obj や巨大ツリーでは OS ウォッチャーが負荷になりやすい（既定の neo-tree は false）
+          use_libuv_file_watcher = false,
           -- hide_gitignored=true（既定）だと git ls-files --ignored が同期実行され、巨大リポで固まる（ls-files.lua）
           filtered_items = {
             hide_gitignored = false,
+            -- ビルド成果物はツリー上もスキャン対象から外し、表示・走査コストを抑える
+            never_show_by_pattern = {
+              "**/bin/**",
+              "**/obj/**",
+              "**/packages/**",
+            },
           },
           -- Neotree コマンド経由の初回もディレクトリ操作を非同期にし、表示までの待ちを減らす
           async_directory_scan = "always",
