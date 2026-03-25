@@ -15,8 +15,7 @@ for group_name, defs in pairs(all_defs) do
       local target = actions[action_id]
 
       if target then
-        -- Lua 関数を rhs にするときは expr を付けない（:help vim.keymap.set）
-        vim.keymap.set(def.mode or "n", key, target, { silent = true, desc = desc })
+        vim.keymap.set(def.mode or "n", key, target, { silent = true, desc = desc, expr = def.expr or false })
       else
         -- アクション未定義時の警告
         local env = vim.g.vscode and "VSCode" or "Neovim"

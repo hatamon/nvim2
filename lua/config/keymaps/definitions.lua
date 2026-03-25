@@ -6,9 +6,9 @@ return {
     { "<C-j>", "window_below", "Focus Window Below" },
     { "<C-k>", "window_above", "Focus Window Above" },
     { "<C-l>", "window_right", "Focus Window Right" },
-    { "Y", "yank", "Yank" },
+    { "Y", "yank", "Yank", expr = true },
     { "<C-V>cb", "branch_paste_current", "Paste Current Branch", mode = "t" },
-    { "<C-V>p", "register_paste", "Paste From Register", mode = "t" },
+    { "<C-V>p", "register_paste", "Paste From Register", mode = "t", expr = true },
     { "<C-k>", "signature_help", "Signature Help", mode = "i" },
   },
   bufferline = {
