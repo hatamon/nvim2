@@ -17,10 +17,10 @@ end
 return {
   general = {
     actions = {
-      window_left = "", --call("workbench.action.navigateLeft"),
-      window_below = "", --call("workbench.action.navigateDown"),
-      window_above = "", --call("workbench.action.navigateUp"),
-      window_right = "", --call("workbench.action.navigateRight"),
+      window_left = call("workbench.action.navigateLeft"),
+      window_below = call("workbench.action.navigateDown"),
+      window_above = call("workbench.action.navigateUp"),
+      window_right = call("workbench.action.navigateRight"),
       yank = utils().yank,
       branch_paste_current = utils().paste_current_branch,
       register_paste = utils().paste_from_register,
@@ -36,7 +36,8 @@ return {
   toggleterm = {
     actions = {
       terminal_toggle = call("workbench.action.terminal.toggleTerminal"),
-      terminal_normal = "",
+      -- actions_nvim の <C-\><C-n> と同様（ターミナルモードでノーマルへ）
+      terminal_normal = "<C-\\><C-n>",
     },
   },
   telescope = {
@@ -44,16 +45,16 @@ return {
       find_files = call("workbench.action.quickOpen"),
       live_grep = call("workbench.view.search"),
       grep_string = call("workbench.action.findInFiles"),
-      buffers = "",
-      help_tags = "",
-      oldfiles = "",
-      resume = "",
+      buffers = call("workbench.action.showAllEditorsByMostRecentlyUsed"),
+      help_tags = call("workbench.action.openGlobalKeybindings"),
+      oldfiles = call("workbench.action.quickOpenRecent"),
+      resume = call("workbench.action.quickOpenPreviousEditor"),
     },
   },
   neotree = {
     actions = {
       explorer_toggle = call("workbench.action.toggleSidebarVisibility"),
-      explorer_focus = call("workbench.view.explorer"),
+      explorer_focus = call("workbench.files.action.focusFilesExplorer"),
     },
   },
   bufdelete = {
@@ -67,12 +68,12 @@ return {
     actions = {
       buffer_format = call("editor.action.formatDocument"),
       definition_go = call("editor.action.revealDefinition"),
-      implementation_go = call("editor.action.goToImplementation"),
-      find_references = call("editor.action.goToReferences"),
+      implementation_go = call("editor.action.peekImplementation"),
+      find_references = call("editor.action.referenceSearch"),
       hover = call("editor.action.showHover"),
       rename = call("editor.action.rename"),
       code_action = call("editor.action.quickFix"),
-      diagnostic_current_line = call("editor.action.diagnostic.show"),
+      diagnostic_current_line = call("editor.action.marker.this"),
       diagnostic_current_buffer = call("workbench.action.problems.focus"),
       diagnostic_prev_error = call("editor.action.marker.prev"),
       diagnostic_next_error = call("editor.action.marker.next"),
@@ -82,9 +83,9 @@ return {
     actions = {
       git_next_hunk = call("workbench.action.editor.nextChange"),
       git_prev_hunk = call("workbench.action.editor.previousChange"),
-      git_preview_hunk = "",
-      git_blame_line = "",
-      git_diffthis = "",
+      git_preview_hunk = call("editor.action.dirtydiff.next"),
+      git_blame_line = call("git.blame.toggleEditorDecoration"),
+      git_diffthis = call("git.openChange"),
       git_reset_hunk = call("git.revertChange"),
     },
   },
